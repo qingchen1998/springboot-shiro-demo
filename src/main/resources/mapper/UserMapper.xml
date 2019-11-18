@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingchen.shiro.studyshiro.mapper.UserMapper">
+
+    <sql id="base_column_list">
+        id,account,password,username,status,permission_version
+    </sql>
+
+    <select id="findByAccount" parameterType="java.lang.String" resultType="com.qingchen.shiro.studyshiro.entity.User">
+        select
+        <include refid="base_column_list"/>
+        from user
+        where account = #{account}
+    </select>
+
+    <select id="findPermissionVersionById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select permission_version
+        from user
+        where id=#{id}
+    </select>
+</mapper>
